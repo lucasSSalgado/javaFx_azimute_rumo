@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.conversor_azimute_rumo.HelloController">
    <children>
       <TextField fx:id="aziToRumo" layoutX="59.0" layoutY="62.0" />
@@ -18,22 +17,18 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="54.0" layoutY="304.0" text="Answer:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="367.0" layoutY="313.0" text="Answer:">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
       <Label layoutX="57.0" layoutY="33.0" text="Azimute to Rumo">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="answerLeft" layoutX="134.0" layoutY="309.0" />
-      <Label fx:id="answerRight" layoutX="445.0" layoutY="318.0" />
+      <Label fx:id="answerLeft" layoutX="58.0" layoutY="299.0" prefHeight="18.0" prefWidth="0.0">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="answerRight" layoutX="369.0" layoutY="299.0">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
    </children>
 </AnchorPane>

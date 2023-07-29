@@ -39,7 +39,7 @@ public class HelloController {
 
     private String convertAzimuteToRumo(String azimute) {
         if (azimute == "") {
-            return "Taz Tola?";
+            return "Tax Tola?";
         }
         String[] split = azimute.split("\\.");
 
@@ -121,35 +121,69 @@ public class HelloController {
 
     private String convertRumoToAzimute(String rumo) {
         if (rumo == "") {
-            return "Taz Tola?";
+            return "Tax Tola?";
         }
         String[] split = rumo.split("\\.");
 
+        int grau = Integer.parseInt(split[0]);
+        int minutos = 0;
+        int segundos = 0;
 
-
-
-
+        if (split.length == 3) {
+            minutos = Integer.parseInt(split[1]);
+        } else if (split.length == 4) {
+            minutos = Integer.parseInt(split[1]);
+            segundos = Integer.parseInt(split[2]);
+        }
 
         String direction = split[split.length - 1];
         String directionLowerCase = direction.toLowerCase();
 
         switch (directionLowerCase) {
             case "ne":
-                System.out.println("NE");
-                break;
+                return rumo;
             case "se":
-                System.out.println("SE");
-                break;
+                if (split.length == 2) {
+                    int newGrau = 180 - grau;
+                    return newGrau + " SE";
+                } else if (split.length == 3) {
+                    int newGrau = 179 - grau;
+                    int newMinuto = 60 - minutos;
+                    return newGrau + "." + newMinuto + " SE";
+                } else if (split.length == 4) {
+                    int newGrau = 179 - grau;
+                    int newMinuto = 59 - minutos;
+                    int newSegundos = 60 - segundos;
+                    return newGrau + "." + newMinuto + "." + newSegundos + " SE";
+                }
             case "sw":
-                System.out.println("SW");
-                break;
+                if (split.length == 2) {
+                    int newGrau = 180 + grau;
+                    return newGrau + " SE";
+                } else if (split.length == 3) {
+                    int newGrau = 180 + grau;
+                    return newGrau + "." + minutos + " SE";
+                } else if (split.length == 4) {
+                    int newGrau = 180 + grau;
+                    return newGrau + "." + minutos + "." + segundos + " SE";
+                }
             case "nw":
-                System.out.println("nw");
-                break;
+                if (split.length == 2) {
+                    int newGrau = 360 - grau;
+                    return newGrau + " SE";
+                } else if (split.length == 3) {
+                    int newGrau = 359 - grau;
+                    int newMinuto = 60 - minutos;
+                    return newGrau + "." + newMinuto + " SE";
+                } else if (split.length == 4) {
+                    int newGrau = 359 - grau;
+                    int newMinuto = 59 - minutos;
+                    int newSegundos = 60 - segundos;
+                    return newGrau + "." + newMinuto + "." +newSegundos + " SE";
+                }
             default:
                 System.out.println("Something Wrong");
         }
-
-        return "SALVE";
+        return "Something Wrong";
     }
 }
