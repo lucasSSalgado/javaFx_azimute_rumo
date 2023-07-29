@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.conversor_azimute_rumo.HelloController">
+   <children>
+      <TextField fx:id="aziToRumo" layoutX="59.0" layoutY="62.0" />
+      <TextField fx:id="rumoToAzi" layoutX="370.0" layoutY="62.0" />
+      <Button fx:id="btnAziToRumo" layoutX="57.0" layoutY="116.0" mnemonicParsing="false" onAction="#onBtnAziToRumoAction" text="Convert" />
+      <Button fx:id="btnRumoToAzi" layoutX="370.0" layoutY="116.0" mnemonicParsing="false" onAction="#onBtnRumoToAziAction" text="Convert" />
+      <Label layoutX="370.0" layoutY="33.0" text="Rumo to Azimute">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="54.0" layoutY="304.0" text="Answer:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="367.0" layoutY="313.0" text="Answer:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="33.0" text="Azimute to Rumo">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="answerLeft" layoutX="134.0" layoutY="309.0" />
+      <Label fx:id="answerRight" layoutX="445.0" layoutY="318.0" />
+   </children>
+</AnchorPane>
