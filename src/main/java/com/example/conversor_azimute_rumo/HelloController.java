@@ -38,25 +38,22 @@ public class HelloController {
     }
 
     private String convertAzimuteToRumo(String azimute) {
+        if (azimute == "") {
+            return "Taz Tola?";
+        }
         String[] split = azimute.split("\\.");
-        int minutos;
-        int segundos;
-
-        try {
-            minutos = Integer.parseInt(split[1]);
-        }
-        catch (ArrayIndexOutOfBoundsException e) {
-            minutos = 0;
-        }
-
-        try {
-            segundos = Integer.parseInt(split[2]);
-        }
-        catch (ArrayIndexOutOfBoundsException e) {
-            segundos = 0;
-        }
 
         int grau = Integer.parseInt(split[0]);
+        int minutos = 0;
+        int segundos = 0;
+
+        if (split.length == 2) {
+            minutos = Integer.parseInt(split[1]);
+        }
+        else if(split.length == 3) {
+            minutos = Integer.parseInt(split[1]);
+            segundos = Integer.parseInt(split[2]);
+        }
 
         // primeiro quadrante
         if(grau >= 0 && grau < 90) {
@@ -64,38 +61,95 @@ public class HelloController {
         }
 
         //segundo quadrante
-        else if(grau >= 90 && grau < 180) {
-            if(grau == 90 && minutos == 0 && segundos == 0) {
-                return "90.SE";
+        if(grau >= 90 && grau < 180) {
+            if(split.length == 1) {
+                return 180 - grau + ".SE";
             }
-            int newGrau = 179 - grau;
-            int newMinuto = 59 - minutos;
-            int newSegundo = 60 - segundos;
+            else if (split.length == 2) {
+                int newGrau = 179 - grau;
+                int newMinuto = 60 - minutos;
+                return newGrau + "." + String.valueOf(newMinuto) + ".SE";
+            }
+            else {
+                int newGrau = 179 - grau;
+                int newMinuto = 59 - minutos;
+                int newSegundo = 60 - segundos;
 
-            return String.valueOf(newGrau)+"."+String.valueOf(newMinuto)+"."+String.valueOf(newSegundo)+".SE";
+                System.out.println(minutos);
+
+                return newGrau + "." + newMinuto + "." + newSegundo + ".SE";
+            }
         }
 
         //terceiro quadrante
-        else if(grau >= 180 && grau < 270) {
-            int newGrau = grau - 180;
-            int newMinuto = minutos;
-            int newSEcundo = segundos;
+        if(grau >= 180 && grau < 270) {
+            if(split.length == 1) {
+                return String.valueOf(grau - 180) + ".SW";
+            }
+            else if(split.length == 2) {
+                int newGrau = grau - 180;
+                int newMinuto = minutos;
+                return newGrau + "." + String.valueOf(newMinuto) + ".SW";
+            }
+            else {
+                int newGrau = grau - 180;
+                int newMinuto = minutos;
+                int newSEcundo = segundos;
 
-            return String.valueOf(newGrau)+"."+String.valueOf(newMinuto)+"."+String.valueOf(newSEcundo)+".SW";
+                return newGrau + "." + String.valueOf(newMinuto) + "." + String.valueOf(newSEcundo) + ".SW";
+            }
         }
 
         // quarto qadrante
+
+        if (split.length == 1) {
+            return 360 - grau + ".NW";
+        }
+        if(split.length == 2) {
+            int newGrau = 359 - grau;
+            int newMinuto = 60 - minutos;
+            return newGrau +"."+ newMinuto + ".NW";
+        }
         else {
             int newGrau = 359 - grau;
             int newMinuto = 59 - minutos;
             int newSegundo = 60 - segundos;
 
-            return String.valueOf(newGrau)+"."+String.valueOf(newMinuto)+"."+String.valueOf(newSegundo)+".NW";
+            return newGrau +"."+String.valueOf(newMinuto)+"."+String.valueOf(newSegundo)+".NW";
         }
     }
 
     private String convertRumoToAzimute(String rumo) {
-        String[] split = rumo.split(".");
+        if (rumo == "") {
+            return "Taz Tola?";
+        }
+        String[] split = rumo.split("\\.");
+
+
+
+
+
+
+        String direction = split[split.length - 1];
+        String directionLowerCase = direction.toLowerCase();
+
+        switch (directionLowerCase) {
+            case "ne":
+                System.out.println("NE");
+                break;
+            case "se":
+                System.out.println("SE");
+                break;
+            case "sw":
+                System.out.println("SW");
+                break;
+            case "nw":
+                System.out.println("nw");
+                break;
+            default:
+                System.out.println("Something Wrong");
+        }
+
         return "SALVE";
     }
 }
