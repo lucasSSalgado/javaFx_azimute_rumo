@@ -68,7 +68,7 @@ public class HelloController {
             else if (split.length == 2) {
                 int newGrau = 179 - grau;
                 int newMinuto = 60 - minutos;
-                return newGrau + "." + String.valueOf(newMinuto) + ".SE";
+                return newGrau + "." + newMinuto + ".SE";
             }
             else {
                 int newGrau = 179 - grau;
@@ -84,38 +84,39 @@ public class HelloController {
         //terceiro quadrante
         if(grau >= 180 && grau < 270) {
             if(split.length == 1) {
-                return String.valueOf(grau - 180) + ".SW";
+                return grau - 180 + ".SW";
             }
             else if(split.length == 2) {
                 int newGrau = grau - 180;
                 int newMinuto = minutos;
-                return newGrau + "." + String.valueOf(newMinuto) + ".SW";
+                return newGrau + "." + newMinuto + ".SW";
             }
             else {
                 int newGrau = grau - 180;
                 int newMinuto = minutos;
                 int newSEcundo = segundos;
 
-                return newGrau + "." + String.valueOf(newMinuto) + "." + String.valueOf(newSEcundo) + ".SW";
+                return newGrau + "." + newMinuto + "." + newSEcundo + ".SW";
             }
         }
 
         // quarto qadrante
-
-        if (split.length == 1) {
-            return 360 - grau + ".NW";
-        }
-        if(split.length == 2) {
-            int newGrau = 359 - grau;
-            int newMinuto = 60 - minutos;
-            return newGrau +"."+ newMinuto + ".NW";
-        }
         else {
-            int newGrau = 359 - grau;
-            int newMinuto = 59 - minutos;
-            int newSegundo = 60 - segundos;
+            if (split.length == 1) {
+                return 360 - grau + ".NW";
+            }
+            if(split.length == 2) {
+                int newGrau = 359 - grau;
+                int newMinuto = 60 - minutos;
+                return newGrau +"."+ newMinuto + ".NW";
+            }
+            else {
+                int newGrau = 359 - grau;
+                int newMinuto = 59 - minutos;
+                int newSegundo = 60 - segundos;
 
-            return newGrau +"."+String.valueOf(newMinuto)+"."+String.valueOf(newSegundo)+".NW";
+                return newGrau + "." +newMinuto + "." + newSegundo + ".NW";
+            }
         }
     }
 
